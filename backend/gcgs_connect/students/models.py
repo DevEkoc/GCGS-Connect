@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 from django.conf import settings
+from schools.models import School, Level
 
 class Student(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -10,14 +11,17 @@ class Student(models.Model):
     adresse = models.TextField()
     telephone = models.CharField(max_length=20, blank=True)
     email = models.EmailField(unique=True, blank=True, null=True)
-    niveau_etudes = models.CharField(max_length=100)
     date_creation = models.DateTimeField(auto_now_add=True)
     
-    # Un étudiant est suivi par un utilisateur (télémarketeur, admin, etc.)
+    # Relations avec School et Level
+    school = models.ForeignKey(School, on_delete=models.SET_NULL, null=True, related_name='students')
+    level = models.ForeignKey(Level, on_delete=models.SET_NULL, null=True, related_name='students')
+
+    # Un étudiant est TOUJOURS suivi par un utilisateur.
+    # Le champ `responsable` est maintenant obligatoire.
     responsable = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.SET_NULL,
-        null=True,
+        on_delete=models.PROTECT, # On protège pour ne pas supprimer l'étudiant si l'user est supprimé
         related_name='students_suivis'
     )
 

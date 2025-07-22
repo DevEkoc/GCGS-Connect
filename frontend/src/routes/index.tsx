@@ -12,6 +12,7 @@ import ForgotPasswordPage from '../pages/ForgotPasswordPage';
 import ResetPasswordPage from '../pages/ResetPasswordPage';
 import DashboardPage from '../pages/DashboardPage';
 import ProfilePage from '../pages/ProfilePage';
+import StudentsPage from '../pages/StudentsPage'; // Importer la nouvelle page
 
 // Routes
 import PrivateRoute from './PrivateRoute';
@@ -44,6 +45,7 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <DashboardPage /> },
             { path: 'profile', element: <ProfilePage /> },
+            { path: 'students', element: <StudentsPage /> },
             // ... autres routes du dashboard
         ]
       }

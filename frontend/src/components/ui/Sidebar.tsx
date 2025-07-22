@@ -1,12 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { HomeIcon, UserCircleIcon, CalendarIcon, UsersIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/24/outline';
+import { HomeIcon, UserCircleIcon, CalendarIcon, UsersIcon, UserGroupIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/24/outline';
 import { useAuth } from '../../contexts/AuthContext';
 
 const navigation = [
   { name: 'Tableau de bord', href: '/dashboard', icon: HomeIcon },
   { name: 'Rendez-vous', href: '/dashboard/appointments', icon: CalendarIcon },
-  { name: 'Clients', href: '/dashboard/clients', icon: UsersIcon },
+  { name: 'Étudiants', href: '/dashboard/students', icon: UsersIcon },
+  { name: 'Parents', href: '/dashboard/parents', icon: UserGroupIcon },
   { name: 'Mon Profil', href: '/dashboard/profile', icon: UserCircleIcon },
 ];
 
@@ -16,7 +17,6 @@ const Sidebar: React.FC = () => {
     <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64">
             <div className="flex items-center h-16 flex-shrink-0 px-4 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
-                {/* Remplacer par un logo */}
                 <span className="text-2xl font-bold text-indigo-600">GCGS</span>
             </div>
             <div className="flex-1 flex flex-col overflow-y-auto bg-white dark:bg-gray-900">
@@ -54,4 +54,4 @@ const Sidebar: React.FC = () => {
   )
 };
 
-export default Sidebar; 
+export default Sidebar;

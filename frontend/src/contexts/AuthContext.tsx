@@ -1,9 +1,8 @@
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import authService from '../services/auth.service';
 
-interface User {
-  // Définissez ici la structure de votre objet utilisateur
-  // Exemple :
+// On exporte l'interface User pour qu'elle soit réutilisable
+export interface User {
   id: string;
   email: string;
   nom: string;
